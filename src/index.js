@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-18 17:47:11
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-18 18:19:20
+ * @LastEditTime: 2020-06-18 18:22:38
  * @Description: 这是XXX组件（页面）
  */
 const util = require('util');
@@ -10,9 +10,9 @@ const exec = util.promisify(require('child_process').exec);
 
 /**
  * @name: 执行命令行
- * @param {cmd}} 
- * @param {path}} 
- * @param {cmd}} 
+ * @param {cmd}} 执行命令语句
+ * @param {path}} 执行命令的路径
+ * @param {timeout}} 执行命令的超时时间
  * @return: 
  */
 const shell = async (arr) => {
@@ -34,5 +34,5 @@ const shell = async (arr) => {
   return true
 }
 
-// export default shell
-shell([{ cmd: ["tree>tree.txt", "tree>tree2.txt"], path: "F:/\workspace/\layui" }, { cmd: ["tree>tree.txt"] }]);
+export default shell
+// shell([{ cmd: ["tree>tree.txt", "tree>tree2.txt"], path: "F:/\workspace/\layui" }, { cmd: ["tree>tree.txt"] }]);
