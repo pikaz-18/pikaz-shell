@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-18 17:47:11
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-19 11:12:24
+ * @LastEditTime: 2020-06-19 11:43:28
  * @Description: 这是执行命令组件（页面）
  */
 const util = require('util');
@@ -12,9 +12,9 @@ const path = require('path');
 
 /**
  * @name: 执行命令行
- * @param {cmd}} 执行命令语句
- * @param {path}} 执行命令的路径
- * @param {timeout}} 执行命令的超时时间
+ * @param {Array} cmd/执行命令语句
+ * @param {String} path/执行命令的路径
+ * @param {Number} timeout/执行命令的超时时间
  * @return: 
  */
 const shell = async (arr) => {
@@ -68,7 +68,11 @@ const date = timeStr("date")
 // 当前时间
 const time = timeStr("time")
 
-// 输出错误日志
+/**
+ * @name: 输出错误日志
+ * @param {type} error/错误信息
+ * @return: 
+ */
 const log = error => {
   const logPath = path.join(__dirname, "log")
   const txtPath = path.join(__dirname, "log", `${date}.txt`)
