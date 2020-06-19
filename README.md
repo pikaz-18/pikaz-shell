@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-05-25 11:34:55
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-19 13:53:25
+ * @LastEditTime: 2020-06-19 14:46:17
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -22,7 +22,7 @@ npm i -S pikaz-shell
 ## For Typical use
 以windows操作系统为例
 ``` js
-import shell from 'pikaz-shell'
+const shell = require("./index")
 shell([{ cmd: ["tree>tree1.txt","tree>tree2.txt"],{ cmd: ["mkdir pikaz-shell"], path: "D:\\" } }])
 ```
 

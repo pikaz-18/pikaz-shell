@@ -1,11 +1,11 @@
 {
   "name": "pikaz-shell",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "javascript for manipulating the shell",
   "main": "lib/pikaz-shell.js",
   "scripts": {
     "build": "webpack",
-    "example": "node lib/example"
+    "example": "node src/example"
   },
   "keywords": [
     "node",

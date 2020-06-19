@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-18 17:47:11
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-19 11:43:28
+ * @LastEditTime: 2020-06-19 15:22:13
  * @Description: 这是执行命令组件（页面）
  */
 const util = require('util');
@@ -15,7 +15,7 @@ const path = require('path');
  * @param {Array} cmd/执行命令语句
  * @param {String} path/执行命令的路径
  * @param {Number} timeout/执行命令的超时时间
- * @return: 
+ * @return: {Boolean} 是否执行成功
  */
 const shell = async (arr) => {
   for (let i = 0; i < arr.length; i++) {
@@ -42,7 +42,7 @@ const shell = async (arr) => {
 /**
  * @name: 当前时间
  * @param {String} type/date为日期，time精确到秒
- * @return: 
+ * @return: {String} 当前时间
  */
 const timeStr = (type) => {
   const zeroFill = n => {
@@ -89,4 +89,4 @@ const log = error => {
   }
 }
 
-export default shell
+module.exports = shell
