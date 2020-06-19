@@ -2,11 +2,13 @@
  * @Author: zouzheng
  * @Date: 2020-06-18 17:47:11
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-18 18:22:38
- * @Description: 这是XXX组件（页面）
+ * @LastEditTime: 2020-06-19 11:12:24
+ * @Description: 这是执行命令组件（页面）
  */
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const fs = require('fs');
+const path = require('path');
 
 /**
  * @name: 执行命令行
@@ -28,11 +30,59 @@ const shell = async (arr) => {
     }, '')
     const { error, stdout, stderr } = await exec(command, { cwd: path || null, timeout: timeout || 0 });
     if (error) {
-      return console.log(error)
+      // 打印错误日志
+      log(error)
+      return false
     }
   }
+  console.log("完成")
   return true
 }
 
+/**
+ * @name: 当前时间
+ * @param {String} type/date为日期，time精确到秒
+ * @return: 
+ */
+const timeStr = (type) => {
+  const zeroFill = n => {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  }
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = zeroFill(date.getMonth() + 1)
+  const day = zeroFill(date.getDate())
+  const hour = zeroFill(date.getHours())
+  const minute = zeroFill(date.getMinutes())
+  const second = zeroFill(date.getSeconds())
+  if (type === "date") {
+    return `${year}-${month}-${day}`
+  }
+  if (type === "time") {
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+  }
+}
+// 当前日期
+const date = timeStr("date")
+// 当前时间
+const time = timeStr("time")
+
+// 输出错误日志
+const log = error => {
+  const logPath = path.join(__dirname, "log")
+  const txtPath = path.join(__dirname, "log", `${date}.txt`)
+  if (!fs.existsSync(logPath)) {
+    // 不存在log目录，则创建
+    fs.mkdirSync(logPath)
+  }
+  if (!fs.existsSync(txtPath)) {
+    // 不存在错误日志文件，则创建
+    fs.writeFileSync(txtPath, `${time}  ${error}; \n`)
+  } else {
+    // 存在则追加错误信息
+    fs.appendFileSync(txtPath, `${time}  ${error}; \n`)
+  }
+}
+
 export default shell
-// shell([{ cmd: ["tree>tree.txt", "tree>tree2.txt"], path: "F:/\workspace/\layui" }, { cmd: ["tree>tree.txt"] }]);
