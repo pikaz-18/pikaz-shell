@@ -23,7 +23,7 @@ npm i -S pikaz-shell
 以windows操作系统为例
 ``` js
 const shell = require("./index")
-shell([{ cmd: ["tree>tree1.txt","tree>tree2.txt"],{ cmd: ["mkdir pikaz-shell"], path: "D:\\" } }])
+shell([{ cmd: ["tree>tree1.txt","tree>tree2.txt"]},{ cmd: ["mkdir pikaz-shell"], path: "D:\\" }])
 ```
 
 ### [Demo代码](https://github.com/pikaz-18/pikaz-shell/blob/master/src/example.js)
